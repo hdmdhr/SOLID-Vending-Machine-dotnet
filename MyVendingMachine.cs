@@ -1,6 +1,17 @@
-public class MyVendingMachine
+
+public interface IFriendlyVendingMachine
 {
-    IProductsLoader _productsLoader;
+    void Start();
+    void AskUserName();
+    void SayHello();
+    void TellTime();
+}
+
+
+public class MyVendingMachine : IFriendlyVendingMachine
+{
+    private IProductsLoader _productsLoader;
+    private string? _userName;
 
     public MyVendingMachine(IProductsLoader productsLoader)
     {
@@ -9,12 +20,9 @@ public class MyVendingMachine
 
     public void Start()
     {
-        Console.WriteLine("Hello Dear Customer! How are you?");
-
-        // var name = Console.ReadLine();
-        var currentDate = DateTime.Now;
-
-        Console.WriteLine($"{Environment.NewLine}Current time is {currentDate:d} at {currentDate:t}! \n");
+        AskUserName();
+        SayHello();
+        TellTime();
 
         foreach (var product in _productsLoader.LoadProducts().Products)
         {
@@ -26,4 +34,41 @@ public class MyVendingMachine
         Console.ReadKey(true);
     }
 
+    public void AskUserName()
+    {
+        Console.WriteLine("Please enter your name");
+        _userName = Console.ReadLine();
+    }
+
+    public void SayHello()
+    {
+        Console.WriteLine($"Hello Dear { _userName ?? "Customer" }! How are you?");
+    }
+
+    public void TellTime()
+    {
+        var currentDate = DateTime.Now;
+
+        Console.WriteLine($"{Environment.NewLine}Current time is {currentDate:d} at {currentDate:t}! \n");
+    }
+
+}
+
+
+
+public class HighEfficencyVendingMachine : IFriendlyVendingMachine
+{
+    public void Start()
+    {
+        SayHello();
+    }
+
+    public void SayHello()
+    {
+        Console.WriteLine($"Hello Dear Customer! How are you?");
+    }
+
+    public void AskUserName() { }
+
+    public void TellTime() { }
 }
