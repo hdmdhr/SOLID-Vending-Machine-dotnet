@@ -4,6 +4,8 @@ namespace VendingMachine
 {
     class Program
     {
+        static ProductsLoader _productsLoader = new ProductsLoader();
+
         static void Main(string[] args)
         {
             Console.WriteLine("Hello Dear Customer! What is your name?");
@@ -13,7 +15,7 @@ namespace VendingMachine
 
             Console.WriteLine($"{Environment.NewLine}Hello dear customer, now is {currentDate:d} at {currentDate:t}! \n");
 
-            ProductsList productsList = JsonFileReader.Read<ProductsList>(@"./products.json");
+            ProductsList productsList = _productsLoader.LoadProducts();
 
             foreach (var product in productsList.Products)
             {
