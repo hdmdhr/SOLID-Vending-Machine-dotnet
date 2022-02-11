@@ -8,10 +8,10 @@ namespace VendingMachine
         {
             Console.WriteLine("Hello Dear Customer! What is your name?");
 
-            var name = Console.ReadLine();
+            // var name = Console.ReadLine();
             var currentDate = DateTime.Now;
 
-            Console.WriteLine($"{Environment.NewLine}Hello, {name}, on {currentDate:d} at {currentDate:t}! \n");
+            Console.WriteLine($"{Environment.NewLine}Hello dear customer, now is {currentDate:d} at {currentDate:t}! \n");
 
             ProductsList productsList = JsonFileReader.Read<ProductsList>(@"./products.json");
 

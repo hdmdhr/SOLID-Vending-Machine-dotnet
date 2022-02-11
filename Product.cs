@@ -8,6 +8,11 @@ public class ProductsList
 
 public class Product
 {
+    static Dictionary<string, PriceLabelMaker> labelMakers = new Dictionary<string, PriceLabelMaker> {
+        { "Drink", new DrinkTypeProductPriceLabelMaker() },
+        { "Fruit", new FruitTypeProductPriceLabelMaker() },
+        { "Other", new OtherTypeProductPriceLabelMaker() }
+    };
     public int ID { get; set; }
     public string Name { get; set; }
     public float Price { get; set; }
@@ -15,6 +20,6 @@ public class Product
 
     public override string ToString()
     {
-        return $"ID: {ID}, {Name} - {PriceLabelMaker.MakePriceLabel(this)} \n";
+        return $"ID: {ID}, {Name} - {labelMakers[Type].MakePriceLabel(this)} \n";
     }
 }
