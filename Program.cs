@@ -4,7 +4,7 @@ namespace VendingMachine
 {
     class Program
     {
-        static ProductsLoader _productsLoader = new ProductsLoader();
+        static IProductsLoader _productsLoader = new JsonProductsLoader();
 
         static void Main(string[] args)
         {

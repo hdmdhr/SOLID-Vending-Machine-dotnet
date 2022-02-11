@@ -1,5 +1,9 @@
+public interface IProductsLoader
+{
+    public ProductsList LoadProducts();
+}
 
-public class ProductsLoader
+public class JsonProductsLoader : IProductsLoader
 {
     public ProductsList LoadProducts()
     {
