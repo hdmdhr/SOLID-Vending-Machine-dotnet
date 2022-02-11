@@ -1,4 +1,4 @@
-using System.IO;
+using System.Text.Json;
 
 public interface IProductsLoader
 {
@@ -9,7 +9,8 @@ public class JsonProductsLoader : IProductsLoader
 {
     public ProductsList LoadProducts()
     {
-        return JsonFileReader.Read<ProductsList>(@"./products.json");
+        string text = File.ReadAllText(@"./products.json");
+        return JsonSerializer.Deserialize<ProductsList>(text);
     }
 }
 

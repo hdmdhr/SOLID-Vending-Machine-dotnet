@@ -6,7 +6,7 @@ namespace VendingMachine
     {
         static void Main(string[] args)
         {
-            var machine = new MyVendingMachine(new CsvProductsLoader());
+            var machine = new MyVendingMachine(new JsonProductsLoader());
 
             machine.Start();
         }
