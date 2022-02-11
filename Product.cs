@@ -1,7 +1,7 @@
 
 public class ProductsList
 {
-    public Product[] Products { get; set; }
+    public List<Product> Products { get; set; }
 }
 
 

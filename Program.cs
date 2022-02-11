@@ -4,16 +4,16 @@ namespace VendingMachine
 {
     class Program
     {
-        static IProductsLoader _productsLoader = new JsonProductsLoader();
+        static IProductsLoader _productsLoader = new CsvProductsLoader();
 
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello Dear Customer! What is your name?");
+            Console.WriteLine("Hello Dear Customer! How are you?");
 
             // var name = Console.ReadLine();
             var currentDate = DateTime.Now;
 
-            Console.WriteLine($"{Environment.NewLine}Hello dear customer, now is {currentDate:d} at {currentDate:t}! \n");
+            Console.WriteLine($"{Environment.NewLine}Current time is {currentDate:d} at {currentDate:t}! \n");
 
             ProductsList productsList = _productsLoader.LoadProducts();
 
